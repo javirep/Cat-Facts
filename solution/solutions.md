@@ -32,9 +32,9 @@ const removeButton = document.getElementById("remove-button"); // almaceno el bo
 removeButton.addEventListener("click", removeFact) // le añado la propiedad addEventListener con la función de quitar facts. 
 ```
 
-Si hacemos esto veremos que cuando pulsamos por primera vez el botón remove-button estamos se añade la primera frase a la ```<ul>``` en vez de quitar el último elemento. 
+Si hacemos esto veremos que cuando pulsamos por primera vez el botón remove-button se añade la primera frase a la ```<ul>``` en vez de quitar el último elemento. 
 
-Esto se debe a que cuando llamamos a la función loadFact cuando pulsamos el botón, no estamos eliminando los elementos antiguos que teníamos desplegados en el DOM. Para ello deberíamos modificar la función loadFacts y añadir esta línea de código:
+Esto se debe a que cuando llamamos a la función loadFact al pulsar el botón, no estamos eliminando los elementos antiguos que teníamos desplegados en el DOM. Para ello deberíamos modificar la función loadFacts y añadir esta línea de código:
 
 ``` js
 function loadFacts(){
