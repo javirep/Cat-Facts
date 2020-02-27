@@ -10,7 +10,7 @@ let url = 'https://catfact.ninja/fact' // Visit https://catfact.ninja/ to read t
 // ITERACIÓN 1: Añade las dos curiosidades de la array para que se despliegen en la lista del HTML.
 function añadirAlHtml() {
     let padre = document.getElementById("cat-facts-list")
-    padre.innerHTML=""
+    padre.innerHTML = ""
 
     factsArray.forEach(element => {
         let child = document.createElement("li")
@@ -45,49 +45,49 @@ function filterDuplicatedFacts(fact) {
             exist = true
         }
     });
-    if(!exist){
+    if (!exist) {
         factsArray.push(fact)
         añadirAlHtml()
-    }else{
+    } else {
         console.log(element)
     }
-  
+
 }
 // ITERACIÓN 4: Añade un elemento input al HTML de tipo number. Cuando el usuario cambie el número de este input cambia el texto de los botones para que aparezca "Add / Remove x cat facts"
-function funcioncambiarnombre(){
-    if(document.getElementById("number-input").value>0){
-        removeButton.innerHTML=`Remove ${document.getElementById("number-input").value} cat facts`
-        addButton.innerHTML=`Add ${document.getElementById("number-input").value} cat facts`
-    }else{
-        removeButton.innerHTML=`Remove a cat fact`
-        addButton.innerHTML=`Add a cat fact`
-        document.getElementById("number-input").value=""
+function funcioncambiarnombre() {
+    if (document.getElementById("number-input").value > 0) {
+        removeButton.innerHTML = `Remove ${document.getElementById("number-input").value} cat facts`
+        addButton.innerHTML = `Add ${document.getElementById("number-input").value} cat facts`
+    } else {
+        removeButton.innerHTML = `Remove a cat fact`
+        addButton.innerHTML = `Add a cat fact`
+        document.getElementById("number-input").value = ""
     }
-    
+
 
 }
 // ITERACIÓN 4.1: modifica las funciónes anteriores para que al hacer click en el botón se añadan o quiten este número de curiosidades. 
-function batch(accion,number){
-    if(number>50){
-        number=50
+function batch(accion, number) {
+    if (number > 50) {
+        number = 50
     }
-     if(number>factsArray.length&&accion===removeElementFunction){
-         number= factsArray.length
+    if (number > factsArray.length && accion === removeElementFunction) {
+        number = factsArray.length
     }
-    if(number==0){
+    if (number == 0) {
         accion()
     }
     for (let i = 0; i < number; i++) {
         accion()
-        console.log(accion,i)
+        console.log(accion, i)
     }
-    removeButton.innerHTML=`Remove a cat fact`
-    addButton.innerHTML=`Add a cat fact`
-    document.getElementById("number-input").value=0
+    removeButton.innerHTML = `Remove a cat fact`
+    addButton.innerHTML = `Add a cat fact`
+    document.getElementById("number-input").value = 0
 
 }
 
 window.onload = añadirAlHtml(factsArray)
-numberInput.addEventListener("change",funcioncambiarnombre) 
-addButton.addEventListener("click",function(){batch(addElementToArray,document.getElementById("number-input").value)})
-removeButton.addEventListener("click",function(){batch(removeElementFunction,document.getElementById("number-input").value)})
+numberInput.addEventListener("change", funcioncambiarnombre)
+addButton.addEventListener("click", function () { batch(addElementToArray, document.getElementById("number-input").value) })
+removeButton.addEventListener("click", function () { batch(removeElementFunction, document.getElementById("number-input").value) })
